@@ -5,8 +5,8 @@ import os
 
 SCRIPT_DIR = Path(__file__).parent.resolve()
 LLVM_SRC_DIR = SCRIPT_DIR / 'llvm-project'
-LLVM_BUILD_DIR = SCRIPT_DIR / 'build'
-LLVM_INSTALL_DIR = SCRIPT_DIR / 'install'
+LLVM_BUILD_DIR = SCRIPT_DIR / 'llvm-build'
+LLVM_INSTALL_DIR = SCRIPT_DIR / 'llvm-install'
 LLVM_GIT_URL = 'https://github.com/llvm/llvm-project'
 LLVM_GIT_TAG = 'main'
 TEST_PROJECT_SRC_DIR = SCRIPT_DIR / 'test-project'
@@ -24,7 +24,7 @@ def install_llvm():
             'git',
             *('clone', LLVM_GIT_URL),
             *('--depth', '1'),
-            *('-branch', LLVM_GIT_TAG),
+            *('--branch', LLVM_GIT_TAG),
             LLVM_SRC_DIR
         )
 

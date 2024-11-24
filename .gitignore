@@ -1,5 +1,5 @@
 llvm-project
 llvm-build
-install
+llvm-install
 test-project-build
 __pycache__
