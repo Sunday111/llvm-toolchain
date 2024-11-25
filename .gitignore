@@ -2,4 +2,5 @@ llvm-project
 llvm-build
 llvm-install
 test-project-build
+generated
 __pycache__

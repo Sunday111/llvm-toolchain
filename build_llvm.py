@@ -1,22 +1,4 @@
-import subprocess
-from pathlib import Path
-import shutil
-import os
-
-SCRIPT_DIR = Path(__file__).parent.resolve()
-LLVM_SRC_DIR = SCRIPT_DIR / 'llvm-project'
-LLVM_BUILD_DIR = SCRIPT_DIR / 'llvm-build'
-LLVM_INSTALL_DIR = SCRIPT_DIR / 'llvm-install'
-LLVM_GIT_URL = 'https://github.com/llvm/llvm-project'
-LLVM_GIT_TAG = 'main'
-TEST_PROJECT_SRC_DIR = SCRIPT_DIR / 'test-project'
-TEST_PROJECT_BUILD_DIR = SCRIPT_DIR / 'test-project-build'
-CLANG_C_COMPILER = LLVM_INSTALL_DIR / 'bin/clang'
-CLANG_CXX_COMPILER = LLVM_INSTALL_DIR / 'bin/clang++'
-
-
-def command(*args):
-    subprocess.check_call([*args])
+from script_common import *
 
 def install_llvm():
     if not LLVM_SRC_DIR.exists():

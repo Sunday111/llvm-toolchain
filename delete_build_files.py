@@ -1,4 +1,4 @@
-from build_llvm import *
+from script_common import *
 
 def delete_build_files():
     shutil.rmtree(LLVM_BUILD_DIR, ignore_errors=True)
