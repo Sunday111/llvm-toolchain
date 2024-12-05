@@ -11,13 +11,14 @@ def install_llvm():
         )
 
     enabled_projects = 'clang;lld;clang-tools-extra'
-    enabled_runtimes = 'libcxx;libcxxabi;libunwind'
+    enabled_runtimes = 'libcxx;libcxxabi;libunwind;compiler-rt'
 
     command(
         'cmake',
         *('-G', 'Ninja'),
         *('-S', LLVM_SRC_DIR / 'llvm'),
         *('-B', LLVM_BUILD_DIR),
+        '-DCLANG_ENABLE_BOOTSTRAP=ON',
         f'-DCMAKE_BUILD_TYPE=Release',
         f'-DCMAKE_INSTALL_PREFIX={LLVM_INSTALL_DIR}',
         "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
@@ -27,6 +28,16 @@ def install_llvm():
         "-DCLANG_DEFAULT_CXX_STDLIB:STRING=libc++",
         "-DLIBCXX_ENABLE_SHARED:BOOL=ON",
         "-DLIBCXX_ENABLE_STATIC:BOOL=ON",
+        f"-DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON",
+        f"-DCOMPILER_RT_BUILD_BUILTINS=ON",
+        f"-DCOMPILER_RT_BUILD_LIBFUZZER=ON",
+        f"-DCOMPILER_RT_BUILD_PROFILE=ON",
+        f"-DCOMPILER_RT_BUILD_SANITIZERS=ON",
+        f"-DCOMPILER_RT_BUILD_XRAY=OFF",
+        f"-DCOMPILER_RT_BUILD_CTX_PROFILE=OFF",
+        f"-DCOMPILER_RT_BUILD_MEMPROF=OFF",
+        f"-DCOMPILER_RT_BUILD_ORC=OFF",
+        f"-DCOMPILER_RT_BUILD_GWP_ASAN=OFF",
     )
 
     command(
