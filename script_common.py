@@ -29,6 +29,7 @@ LLVM_RANLIB_PATH = LLVM_BIN_DIR / 'llvm-ranlib'
 CLANGD_PATH = LLVM_BIN_DIR / 'clangd'
 CLANGFORMAT_PATH = LLVM_BIN_DIR / 'clang-format'
 VSCODE_SETTINGS_JSON = VSCODE_GEN_PATH / 'settings.json'
+VSCODE_CMAKE_KITS_JSON = VSCODE_GEN_PATH / 'cmake-kits.json'
 
 
 
