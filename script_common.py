@@ -16,6 +16,8 @@ TEST_PROJECT_BUILD_DIR = SCRIPT_DIR / 'test-project-build'
 GENERATED_DIR = SCRIPT_DIR / 'generated'
 CMAKE_TOOLCHAIN_FILEPATH = GENERATED_DIR / 'llvm-toolchain.cmake'
 VSCODE_GEN_PATH = GENERATED_DIR / '.vscode'
+TEMPLATES_DIR = SCRIPT_DIR / 'templates'
+VSCODE_TEMPLATE_DIR = TEMPLATES_DIR / '.vscode'
 TOOLCHAIN_CXX_FLAGS = ' '.join(['-static', '-stdlib=libc++'])
 TOOLCHAIN_LINKER_FLAGS = ' '.join(['-lc++abi'])
 

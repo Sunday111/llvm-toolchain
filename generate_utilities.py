@@ -17,6 +17,11 @@ set(CMAKE_EXE_LINKER_FLAGS "{TOOLCHAIN_LINKER_FLAGS}")
         file.write(file_content)
 
 
+def copy_vscode_template():
+    shutil.rmtree(VSCODE_GEN_PATH)
+    shutil.copytree(src=VSCODE_TEMPLATE_DIR, dst=VSCODE_GEN_PATH)
+
+
 def generate_vscode_settings():
     data = dict()
     data["cmake.configureArgs"] = [
@@ -30,7 +35,7 @@ def generate_vscode_settings():
         json.dump(data, file, indent=4)
 
 
-def generate_cmake_kits_json():
+def generate_vscode_cmake_kits_json():
     data = [
         {
             "name": f"LLVM from sources, {LLVM_GIT_TAG}",
@@ -48,8 +53,10 @@ def generate_cmake_kits_json():
 
 def generate_utilities():
     generate_cmake_toolchain_file()
+
+    copy_vscode_template()
     generate_vscode_settings()
-    generate_cmake_kits_json()
+    generate_vscode_cmake_kits_json()
 
 
 if __name__ == "__main__":
