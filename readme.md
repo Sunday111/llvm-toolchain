@@ -23,14 +23,27 @@ You can use it in your project this way
 cmake -S path/to/your/project -B path/to/build/directory -DCMAKE_TOOLCHAIN_FILE=path/to/toolchain/file
 ```
 
-### `generated/.vscode/settings.json`
+### `generated/.vscode`
+
+Configuration files for VS Code. Just put these files into the root of your workspace and reload window. You might need only a subset of them, it depends on extensions you use.
+
+#### `generated/.vscode/settings.json`
 
 `.vscode` dir can be put into your project root directory or used as an example for your vscode user settings. 
 
 Content:
 - path to [cland](https://clangd.llvm.org/), required by [clangd extension](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)
 - path to [clang-format](https://clang.llvm.org/docs/ClangFormat.html), required by [clang-format extension](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- specifies path to cmake toolchain file, which then can be used by [CMake Tools extensions](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) to generate project files (Just make sure that you specify no active kit before generating project files).
+
+
+#### `generated/.vscode/cmake-kits.json`
+
+Specifies location of LLVM toolchain for [CMake Tools extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools). It allows you to use built toolchain from this extension.
+
+#### `generated/.vscode/launch.json`
+
+Simple launch.json file to debug C++ code using commands and UI from [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) and [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) extensions.
+
 
 ## `build_test_project.py`
 
