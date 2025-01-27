@@ -12,14 +12,8 @@ set(CMAKE_CXX_FLAGS "{TOOLCHAIN_CXX_FLAGS}" CACHE STRING "")
 set(CMAKE_EXE_LINKER_FLAGS "{TOOLCHAIN_LINKER_FLAGS}" CACHE STRING "")
 """
 
-    GENERATED_DIR.mkdir(exist_ok=True)
     with open(file=CMAKE_TOOLCHAIN_FILEPATH, mode="wt", encoding="utf-8") as file:
         file.write(file_content)
-
-
-def copy_vscode_template():
-    shutil.rmtree(VSCODE_GEN_PATH)
-    shutil.copytree(src=VSCODE_TEMPLATE_DIR, dst=VSCODE_GEN_PATH)
 
 
 def generate_vscode_settings():
@@ -49,9 +43,10 @@ def generate_vscode_cmake_kits_json():
 
 
 def generate_utilities():
+    shutil.rmtree(GENERATED_DIR, ignore_errors=True)
+    GENERATED_DIR.mkdir(exist_ok=True)
     generate_cmake_toolchain_file()
-
-    copy_vscode_template()
+    shutil.copytree(src=VSCODE_TEMPLATE_DIR, dst=VSCODE_GEN_PATH)
     generate_vscode_settings()
     generate_vscode_cmake_kits_json()
 
