@@ -1,9 +1,10 @@
 from script_common import *
+import clean_workspace
 import run_all
 
 def rerun_all():
-    subprocess.check_call(['git', 'clean', '-fdX'], cwd=SCRIPT_DIR)
+    clean_workspace.clean_workspace()
     run_all.run_all()
 
 if __name__ == '__main__':
-    run_all()
+    rerun_all()
